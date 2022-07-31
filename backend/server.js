@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const pinRoute = require("./routes/pins");
+const userRoute = require("./routes/users");
 
 const PORT = 9090;
 const URL = process.env.MONGODB_URL;
@@ -19,9 +20,10 @@ mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(express.json()); // for POST requests
 
 // Methods
-app.use("/api/pins/",pinRoute); // http://localhost:9090/api/pins
+app.use("/api/pins/", pinRoute); // http://localhost:9090/api/pins
+app.use("/api/users/", userRoute);
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("hello");
 })
 app.listen(PORT, () => {
