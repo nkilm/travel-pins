@@ -16,12 +16,6 @@ const pinSchema = mongoose.Schema(
             require: true,
             min: 3
         },
-        rating: {
-            type: String,
-            require: true,
-            min: 0,
-            max: 5
-        },
         latitude: {
             type: Number,
             require: true,
