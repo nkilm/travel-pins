@@ -8,7 +8,6 @@ const PlacePopup = ({latitude,longitude,title,description,username,time}) => {
         <Popup longitude={longitude} latitude={latitude}
             anchor="left"
         >   
-            {console.log("called")}
             <div className={styles.card}>
                 <label>Place</label>
                 <h4 className={styles.place}>{title}</h4>
@@ -22,4 +21,4 @@ const PlacePopup = ({latitude,longitude,title,description,username,time}) => {
     )
 }
 
-export default PlacePopup;
+export default React.memo(PlacePopup);
