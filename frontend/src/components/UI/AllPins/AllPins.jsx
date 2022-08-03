@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import axios from "axios";
-import { Marker } from 'react-map-gl';
+import { Marker, Popup } from 'react-map-gl';
 import { Room } from '@material-ui/icons';
 import { format } from "timeago.js";
 
-import PlacePopup from '../Popup/PlacePopup';
+import styles from "./popup.module.css";
 
-const AllPins = () => {
+const AllPins = ({ handleChangeViewstate, currentViewState }) => {
     const currentUser = "nikhilmohite";
     const [allPins, setAllPins] = useState([]);
     const [currentPlaceId, setCurrentPlaceId] = useState(null);
@@ -19,9 +19,11 @@ const AllPins = () => {
         getAllPins();
     }, []);
 
-    const handleMarkerClick = useCallback(id => {
+    const handleMarkerClick = useCallback((id, lat, long) => {
         setCurrentPlaceId(id);
-    }, []);
+        handleChangeViewstate({ ...currentViewState, latitude: lat, longitude: long })
+    }, [currentViewState, handleChangeViewstate]);
+
 
     return (
         <>
@@ -31,17 +33,26 @@ const AllPins = () => {
                         longitude={pin.longitude}
                         latitude={pin.latitude}
                     >
-                        <Room style={{ color: pin.username === currentUser ? "tomato" : "slateblue", cursor: "pointer" }} onClick={() => { handleMarkerClick(pin._id) }} />
+                        <Room style={{ color: pin.username === currentUser ? "tomato" : "slateblue", cursor: "pointer" }} onClick={() => { handleMarkerClick(pin._id, pin.latitude, pin.longitude) }} />
                     </Marker>
-                    {(pin._id === currentPlaceId) && (<PlacePopup
-                        latitude={pin.latitude}
-                        longitude={pin.longitude}
-                        title={pin.title}
-                        description={pin.description}
-                        username={pin.username}
-                        time={format(pin.createdAt)}
-                        onClose={() => { setCurrentPlaceId(null) }}
-                    ></PlacePopup>) && console.log("rendered")}
+                    {(pin._id === currentPlaceId) && (
+                        <Popup
+                            longitude={pin.longitude}
+                            latitude={pin.latitude}
+                            anchor="left"
+                            onClose={setCurrentPlaceId(null)}
+                        >
+                            <div className={styles.card}>
+                                <label>Place</label>
+                                <h4 className={styles.place}>{pin.title}</h4>
+                                <label>Desciption</label>
+                                <p className={styles.description}>{pin.description}</p>
+                                <label>Information</label>
+                                <span className={styles.username}>Created by <b>{pin.username}</b> </span>
+                                <span className={styles.date}>{format(pin.createdAt)}</span>
+                            </div>
+                        </Popup>
+                    )}
                 </>
             ))}
         </>
