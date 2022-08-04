@@ -6,6 +6,8 @@ import { Room } from '@material-ui/icons';
 import { format } from "timeago.js";
 
 import "./app.css";
+import Register from './components/Register';
+import Login from './components/Login';
 
 function App() {
   const [viewState, setViewState] = useState({
@@ -19,6 +21,8 @@ function App() {
   const [title, setTitle] = useState("");
   const [desciption, setDesciption] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const handleDblClick = (event) => {
     const coord = event['lngLat'];
@@ -125,6 +129,31 @@ function App() {
               </form>
             </div>
           </Popup>
+        )}
+
+
+        {currentUser ? (
+          <button className="btn logout" >
+            Log out
+          </button>
+        ) : (
+          <div className="buttons">
+            <button className="btn login" onClick={() => { setShowLogin(true) }}>
+              Log in
+            </button>
+            <button
+              className="btn register" onClick={() => { setShowRegister(true) }}
+            >
+              Register
+            </button>
+          </div>
+        )}
+        {showRegister && (
+          <Register setShowRegister={setShowRegister}/>
+        )}
+
+        {showLogin && (
+          <Login/>
         )}
       </Map>
     </div >
