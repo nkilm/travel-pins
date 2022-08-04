@@ -17,11 +17,16 @@
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "http://localhost:9090/api",
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:9090/api"
+  }
 }
