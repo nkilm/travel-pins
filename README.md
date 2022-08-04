@@ -20,3 +20,6 @@
 - [x] Material UI 
 - [x] Mapbox GL
 > Similar to Google Maps 
+
+## To-Do
+- [ ] Split the Project into multiple components
