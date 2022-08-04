@@ -18,9 +18,6 @@
     "web-vitals": "^2.1.4"
   },
   "proxy": "https://travel-pins-app.herokuapp.com/api/",
-  "engines": {
-    "node": "16.14.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
