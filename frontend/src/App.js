@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Room } from '@material-ui/icons';
 import { format } from "timeago.js";
 
-import styles from "./app.module.css";
+import "./app.css";
 
 function App() {
   const [viewState, setViewState] = useState({
@@ -71,6 +71,7 @@ function App() {
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
+        // mapStyle="mapbox://styles/mapbox/dark-v10"
         onDblClick={handleDblClick}
       >
         {/* <AllPins handleChangeViewstate={setViewState} currentViewState={viewState} setUpdateAllPins={setUpdateAllPins} /> */}
@@ -89,14 +90,14 @@ function App() {
                 anchor="left"
                 onClose={setCurrentPlaceId(null)}
               >
-                <div className={styles.card}>
+                <div className="card">
                   <label>Place</label>
-                  <h4 className={styles.place}>{pin.title}</h4>
+                  <h4 className="place">{pin.title}</h4>
                   <label>Desciption</label>
-                  <p className={styles.description}>{pin.description}</p>
+                  <p className="description">{pin.description}</p>
                   <label>Information</label>
-                  <span className={styles.username}>Created by <b>{pin.username}</b> </span>
-                  <span className={styles.date}>{format(pin.createdAt)}</span>
+                  <span className="username">Created by <b>{pin.username}</b> </span>
+                  <span className="date">{format(pin.createdAt)}</span>
                 </div>
               </Popup>
             )}
@@ -109,18 +110,22 @@ function App() {
             longitude={newPinCoordinates.long}
             onClose={() => { setNewPinCoordinates(null) }}
           >
-            <form className={styles.form} onSubmit={handleOnSubmit}>
-              <label htmlFor='title'>Title</label>
-              <input type="text" name='title' onChange={e => { setTitle(e.target.value) }} />
+            <div className="container">
+              <form className="form" onSubmit={handleOnSubmit}>
+                <div className="title group">
+                  <label htmlFor='title'>Place</label>
+                  <input type="text" name='title' onChange={e => { setTitle(e.target.value) }} placeholder="Enter the place name" required />
+                </div>
 
-              <label htmlFor='desc'>Description</label>
-              <input type="text" name="desc" onChange={e => { setDesciption(e.target.value) }} />
-
-              <button type='submit' className='submitButton'>Add Pin📌</button>
-            </form>
+                <div className="desc group">
+                  <label htmlFor='desc'>Description</label>
+                  <textarea type="text" name="desc" onChange={e => { setDesciption(e.target.value) }} placeholder="Enter the description" required />
+                </div>
+                <button type='submit' className='submitButton'>Add Pin📌</button>
+              </form>
+            </div>
           </Popup>
         )}
-
       </Map>
     </div >
   );
