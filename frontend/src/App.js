@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 
 function App() {
+  const myLocalStorage = window.localStorage;
   const [viewState, setViewState] = useState({
     latitude: 21.1458,
     longitude: 79.0882,
@@ -67,6 +68,10 @@ function App() {
     }
   }
 
+  const handleLogout = () => {
+    myLocalStorage.removeItem("username");
+    setCurrentUser(null);
+  }
 
   return (
     <div className="App">
@@ -133,7 +138,7 @@ function App() {
 
 
         {currentUser ? (
-          <button className="btn logout" >
+          <button className="btn logout" onClick={handleLogout}>
             Log out
           </button>
         ) : (
@@ -149,11 +154,11 @@ function App() {
           </div>
         )}
         {showRegister && (
-          <Register setShowRegister={setShowRegister}/>
+          <Register setShowRegister={setShowRegister} />
         )}
 
         {showLogin && (
-          <Login/>
+          <Login setShowLogin={setShowLogin} setCurrentUser={setCurrentUser} myLocalStorage={myLocalStorage} />
         )}
       </Map>
     </div >
