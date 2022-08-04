@@ -17,7 +17,7 @@
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://localhost:9090/api",
+  "proxy": "https://travel-pins-app.herokuapp.com/api/",
   "engines": {
     "node": "16.14.0"
   },
