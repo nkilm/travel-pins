@@ -1,0 +1,40 @@
+# NOTE: Please check if you have the proper extension to run this file
+# VS Code Extension: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+GET http://localhost:9090 HTTP/1.1
+# Check the status of server
+
+### 
+GET http://localhost:9090/api/pins HTTP/1.1
+# fetch all pins
+
+### 
+POST http://localhost:9090/api/pins HTTP/1.1
+content-type: application/json
+
+{
+    "username": "nikhilmohite",
+    "title": "Varanasi",
+    "description": "One of oldest Cities till date, Varanasi is also known by name Banaras/Kashi.",
+    "latitude": "25.3176",
+    "longitude": "82.9739"
+}
+
+###
+POST http://localhost:9090/api/users/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "test",
+    "email":"test@gmail.com",
+    "password": "test@travelapp"
+}
+
+### 
+POST http://localhost:9090/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "test",
+    "password": "test@travelapp"
+}
