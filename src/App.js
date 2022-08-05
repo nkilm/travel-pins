@@ -50,7 +50,7 @@ function App() {
 
   const handleOnSubmit = async () => {
     const newPinObj = {
-      username: "nikhil",
+      username: currentUser?currentUser:"anonymous",
       title: title,
       description: desciption,
       latitude: newPinCoordinates.lat,
@@ -79,8 +79,9 @@ function App() {
         initialViewState={{ ...viewState }}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         style={{ width: "100vw", height: "100vh" }}
-        mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
+        // mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
         // mapStyle="mapbox://styles/mapbox/dark-v10"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         onDblClick={handleDblClick}
       >
         {/* <AllPins handleChangeViewstate={setViewState} currentViewState={viewState} setUpdateAllPins={setUpdateAllPins} /> */}

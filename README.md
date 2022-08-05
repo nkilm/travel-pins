@@ -1,8 +1,6 @@
 # Travel Pin Website
 > MERN Stack Project 
 
-## Live Project💐
-
 ## Concepts Learned
 - [x] Folder Structure for MERN Stack Projects.
 > can vary depending on hosting site
@@ -10,7 +8,7 @@
 > using mongoose/MongoClient
 - [x] Schemas/Model in MongoDB
 - [x] React Context API
-- [x] Optimizating React using `React.memo`
+- [x] Optimizing React using `React.memo`
 - [x] React Hooks
 > useState, useEffect, useCallback
 - [x] Conditional Rendering
@@ -18,8 +16,18 @@
 - [x] Local Storage in Browsers - `window.localStorage`
 - [x] Event Handlers - `Event Loop`
 - [x] Material UI 
-- [x] Mapbox GL
+- [x] React Mapbox GL
 > Similar to Google Maps 
+- [x] Deploying MERN Stack Apps
+
+## Visuals
+> Light Theme
+
+![website-on-light-mode](https://drive.google.com/uc?export=view&id=10rAUaoZ8XYaMHWZQ4QRGsd1yv1J0z5qy)
+
+>Dark Theme
+
+![website-on-dark-mode](https://drive.google.com/uc?export=view&id=1uvGz6C7kdAfnpcGmWynKRMIerctEEm0g)
 
 ## To-Do
 - [ ] Split the Project into multiple components
