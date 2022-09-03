@@ -1,6 +1,13 @@
 # Travel Pin Website
 > MERN Stack Project 
 
+## Backend Deployment
+- `Base URL` - [https://travel-pins-app.herokuapp.com/](https://travel-pins-app.herokuapp.com/)
+
+- All `Pins` - [https://travel-pins-app.herokuapp.com/api/pins](https://travel-pins-app.herokuapp.com/api/pins/)
+
+`NOTE: Set appropriate permissions to prevent access to backend by anyone.`
+
 ## Concepts Learned
 - [x] Folder Structure for MERN Stack Projects.
 > can vary depending on hosting site
